@@ -1,0 +1,11 @@
+Basic Questions
+What are the different data types in JavaScript?
+What is the difference between primitive and non-primitive (reference) data types?
+What is the difference between null and undefined?
+What is the difference between == and === in JavaScript?
+What is the difference between var, let, and const?
+What is hoisting in JavaScript? How does it affect variables?
+What is the difference between mutable and immutable data types?
+Can you explain Symbol and BigInt data types?
+What happens if you try to reassign a value to a const variable?
+What are global variables and why should you avoid them?
