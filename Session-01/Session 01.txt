@@ -1,0 +1,49 @@
+What is javascript?
+
+1990 tim berners lee www
+1995 Netscape browser 
+brendech eich 10 javascipt  livescript
+
+Sunmicrosystem 
+	Java 			Livescript 			JavaScript 
+ 1997 MDN MOZILLA DEVELOPERS NETWORK
+1997 ECMA europian computer manufacturer association 
+ECMA script 1
+2015 ECMA script 6
+
+ECMA2025 
+
+
+
+Browser 
+
+Chrome 		V8 
+IE 		Chakra 
+Forefox		Spider Monkey
+Safari 		Nitro
+
+2000 - 2008	Rayn Dyle 	Node Environment
+
+Node
+NPM		Node Package Manager 
+
+
+JavaScript is light weight Interpretted and Just in Tme Compiled programming language
+
+Ahead of Time Compilation
+
+
+
+
+JavaScript Use =>		JQuerry Library  
+
+RXJS				=>Http Client
+
+Redux				=> State 
+Web Pack 			=> Bundle
+
+Backends 			MAUI
+				Fiory
+
+Javscript is an oop
+
