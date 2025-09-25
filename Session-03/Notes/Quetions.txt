@@ -1,0 +1,56 @@
+Array Questions
+
+What is an array in JavaScript?
+
+How do you check if a variable is an array?
+
+What is the difference between for...in and for...of in arrays?
+
+Write a program to reverse an array without using reverse().
+
+Write a program to remove duplicate values from an array.
+
+Write a program to find the maximum and minimum numbers in an array.
+
+Explain the difference between slice() and splice() with examples.
+
+What will be the output of the following code?
+
+let arr = [1,2,3];
+arr.length = 0;
+console.log(arr);
+
+
+Write a program to filter even numbers from an array.
+
+Explain the difference between map(), forEach(), and filter().
+
+-----------------------------------------------------------------------
+Function Questions
+
+What are the different ways to declare functions in JavaScript?
+
+Write a function to check if a number is prime.
+
+Write a function to reverse a string.
+
+Write a function to find factorial of a number using recursion.
+
+What is the difference between normal function and arrow function?
+
+What is an IIFE? Write an example.
+
+What is a callback function? Give a simple example.
+
+Explain the difference between function declaration and function expression.
+
+What is hoisting in JavaScript functions? Give an example.
+
+What will be the output of the following code?
+
+var x = 10;
+function test() {
+    console.log(x);
+    var x = 20;
+}
+test();

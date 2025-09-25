@@ -1,0 +1,34 @@
+Array 
+push =>		last element add
+pop	=>		last element remove
+unshift =>	first element add
+shift =>	remove first element
+indexOf	=>	return index
+includes => checks value present or ont in array
+slice => slice(start,end)  => returns sliced array
+splice => splice(start,Deleted count,Newitem)
+
+concat =>  merge Two Arrays 
+
+join =>   enters <any value>  for saperating 
+reverse =>		reverse array
+sort =>			alphabetically sort
+
+
+find =>	
+filter=>
+map =>
+reduce =>
+
+
+-----------------------------------------------------------------------
+
+Function
+1 Normal Funnction With Function Keyword
+2 Return,No return,With Parameter ,No Parameter
+3 Anonymous Function
+4 Arrow Function
+5 IIFE	=> Immediately Invoked Function Expression
+
+-------------------------------------------------------
+Callback Function
