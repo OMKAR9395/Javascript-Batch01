@@ -1,0 +1,13 @@
+Function
+
+	Callback
+	Higher Order Function
+	
+Looping
+	in C =>  for ,while,do while
+
+	in Javascript =>  for, while,do while,for..in,for..of,for..Each
+	
+for 			when coondition is fixed
+while			when condition is  not fixed
+do while 		one condition execute and other loop is checkin on condition 
