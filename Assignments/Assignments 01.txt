@@ -1,0 +1,67 @@
+1. Data Types
+	Declare a variable with a number value and print its type using typeof.
+	Concatenate a string and a number and observe the output.
+	Create a boolean variable, change its value, and print it.2. Operators
+	Take two numbers and apply arithmetic operators (+, -, *, /, %).
+	Compare two numbers using relational operators (>, <, ==, ===, !=).
+3. Functions
+	Write a function that adds two numbers and returns the result.
+	Create an anonymous function to multiply two numbers.
+	Use an arrow function to find the square of a number.
+	Demonstrate a function with default parameters.
+4. Arrays
+	Create an array of 5 student names and print them using a loop.
+	Find the maximum number from an array.
+	Remove duplicate values from an array (hint: use Set).
+5. Objects
+	Create a student object with properties: name, age, and marks.
+	Use for...in to print all properties of the object.
+	Create a nested object (student with address) and print the city property.
+6. for loop
+	Print numbers from 1 to 10 using a for loop.
+	Print only even numbers from 1 to 20.
+	Print the following star pattern:
+	*
+	* *
+	* * *
+	* * * *
+7. while loop
+	Print numbers from 1 to 10 using a while loop.
+	Find the sum of digits of a number (e.g., 123 → 1+2+3=6).
+	Keep asking for a password until it is correct (simulate with attempts).
+8. do...while loop
+	Print numbers from 1 to 5 using a do...while loop.
+	Write a program that prints "Welcome" at least once regardless of the condition.
+9. for...in loop
+	Create a car object with properties (brand, model, year) and print them.
+	Use for...in on a nested object and print inner properties.
+	Use for...in on an array and print the indices.
+
+📘 JavaScript Array Inbuilt Methods – Assignments
+1. push() and pop()
+	Create an empty array. Use push() to add 5 student names into it.
+	Remove the last element using pop() and print the updated array.
+2. shift() and unshift()
+	Create an array of fruits. Remove the first fruit using shift().
+	Add a new fruit at the beginning using unshift().
+3. slice()
+	Create an array of 10 numbers. Extract the first 5 numbers using slice().
+	Extract the last 3 numbers using slice().
+4. splice()
+	Create an array [10,20,30,40,50]. Remove the element at index 2 using splice().
+	Insert two numbers at index 1 using splice().
+5. concat()
+	Concatenate two arrays [1,2,3] and [4,5,6] into a single array.
+	Concatenate an array of fruits and vegetables.
+6. join()
+	Convert an array of characters ['J','S'] into a string "JS".
+	Create an array of words and join them with a space.
+7. sort()
+	Create an array of numbers and sort them in ascending order.
+	Sort an array of strings alphabetically.
+8. reverse()
+	Create an array [1,2,3,4,5] and reverse it.
+	Reverse an array of characters and join them into a string.
+9. indexOf() and includes()
+	Create an array [10,20,30,40]. Use indexOf(30) to find the index.
+	Check if 50 is present using includes().

@@ -11,3 +11,4 @@ Looping
 for 			when coondition is fixed
 while			when condition is  not fixed
 do while 		one condition execute and other loop is checkin on condition 
+for in 			used of object travercel
