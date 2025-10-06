@@ -1,0 +1,14 @@
+escaape sewuence =>  \n,\b,\a,\r,\t
+
+join 		join is a saperator which is used for arrays
+
+Default (,) saperated array values saperate out
+
+for of 
+	Array 
+	string
+	Array of objects
+	
+for Each 
+
+
