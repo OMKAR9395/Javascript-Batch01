@@ -1,0 +1,25 @@
+1.Create a Set of 5 numbers (include duplicates) → print all unique numbers.
+
+2.Add a new value, delete one value, and print final Set.
+
+3.Check if a number exists using .has().
+
+4.Convert Set → Array using [...set] and print.
+
+5.Find intersection of two Sets [1,2,3,4] & [3,4,5,6].Create a Map → key: studentName, value: marks → print all using for…of.
+
+6.Add 3 entries, delete one entry, print .size.
+
+7.Check if a key exists using .has().
+
+8.Get a value using .get().
+
+9.Merge two Maps → print all pairs.
+
+10.Array Destructuring: [10,20,30,40] → extract first two numbers.
+
+11.Spread: Merge two arrays [1,2] and [3,4].
+
+12.Rest: Write a function sum(...nums) that prints total of any numbers.
+
+13.Combine destructuring + rest in one example.

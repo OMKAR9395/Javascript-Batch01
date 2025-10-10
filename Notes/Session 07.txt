@@ -1,0 +1,33 @@
+DOM
+	Document Object Model
+	
+	Document 
+		<p>,<head>,<html>
+		
+	Object 
+		 <script>
+        let heading = document.getElementById("headH2");
+            heading.innerText = "Dom Manipulation ";
+            heading.style.color = "Blue";
+    </script>
+	
+	Model  
+		document
+			html	
+				body
+					h1
+					p
+					
+					
+-----------------------------------------------------------------------------------------
+
+	DOM Collection 
+	
+	1.Access Image And Change Their Path
+	2.for loop
+
+-----------------------------------------------------------------------------------------------
+	Dom Manipulation By using name
+	Using By id
+	
+	

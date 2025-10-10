@@ -1,0 +1,33 @@
+Map Build in object
+	key value
+	
+object {name : "Fork",age:25}
+
+let mymap = new Map();
+
+Set 			=>  insert Element
+
+
+for of loop  when iterate map 
+		key value 
+		
+		
+Set collection of unique values
+Assignment  
+
+
+
+	has(value) 
+	clear()
+	size
+	
+	
+----------------------------------------------------------------------
+
+Destructuring
+
+Spread ...			used in arrays
+
+rest  ...			used in functions
+
+---------------------------------------------------------------------------------------
