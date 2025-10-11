@@ -21,13 +21,22 @@ DOM
 					
 -----------------------------------------------------------------------------------------
 
-	DOM Collection 
+	DOM Collection Hierarchy 
 	
 	1.Access Image And Change Their Path
 	2.for loop
 
 -----------------------------------------------------------------------------------------------
 	Dom Manipulation By using name
-	Using By id
+		
+		-Every Element Can be defined with a name 
+		
+		
+	-----------------------------------------------------------------------------------
 	
+	DOM MAnipulation using id selector
+	
+	Create data and Read Data Using Id And For Of loop
+	
+----------------------------------------------------------------------------------------
 	
