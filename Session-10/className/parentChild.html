@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <p class="note">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ipsa nihil eos voluptas! Totam enim quia
+            quisquam. In, consectetur nostrum!</p>
+
+        <p class="note"> Inside of Parent</p>
+    </div>
+    <p class="note">Outside Of Div</p>
+
+
+    <script>
+        const box = document.getElementById('box');
+        const notes = box.getElementsByClassName('note');
+        for(let i=0;i<notes.length;i++){
+            notes[i].style.background = 'yellow';
+            notes[i].style.color = 'black';
+        }
+    </script>
+</body>
+
+</html>

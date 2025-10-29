@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="email" placeholder="Enter Email">
+        <input type="password" name="password" placeholder="Enter Password">
+
+        <button type="button" onclick="updateFields()"> Update</button>
+    </form>
+
+    <script>
+        function updateFields(){
+            const email = document.getElementsByName('email')[0];
+            const pass = document.getElementsByName('password')[0];
+
+            email.style.background = 'lightyellow';
+            pass.style.background = 'lightpink';
+
+            email.value = 'example@gmail.com';
+            pass.value = '123456';
+        }
+    </script>
+</body>
+</html>

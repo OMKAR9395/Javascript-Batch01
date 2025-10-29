@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        <li>Lichi</li>
+    </ul>
+
+    <script>
+        const items = document.getElementsByTagName('li');
+        document.body.innerHTML += `<h3> Total Fruits : ${items.length}</h3>`;
+
+        for(let i=0;i<items.length;i++){
+            items[i].style.color = 'brown';
+        }
+    </script>
+</body>
+</html>

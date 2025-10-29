@@ -27,7 +27,7 @@
 
 <h3>Add New Student</h3>
 
-    <form action="" onsubmit="addStudent();return false;">
+    <form action="" onsubmit="addStudent(event)">
         <input type="number" name="" id="roll" placeholder="Enter Roll Number">
         <input type="text" name="" id="name" placeholder="Enter Name">
         <input type="number" name="" id="marks" placeholder="Enter Marks">
@@ -56,7 +56,7 @@
             }
         }
 
-        function addStudent(){
+        function addStudent(passedEvent){
             var rollInput = document.getElementById("roll");
             var nameInput = document.getElementById("name");
             var marksInput = document.getElementById("marks");
@@ -68,19 +68,12 @@
             }
             students.push(newStudent);
 
+            passedEvent.preventDefault();
+            
             loadStudent();
-            //  rollInput.value = "";
-            // nameInput.value ="";
-            // marksInput.value ="";   
-
-            clearControls();
-        }
-
-        function clearControls(){
-            rollInput.value = "";
+             rollInput.value = "";
             nameInput.value ="";
-            marksInput.value ="";
-            return false;
+            marksInput.value ="";        
         }
     </script>
 </body>

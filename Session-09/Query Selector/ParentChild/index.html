@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- parent -->
+    <div class="box">  
+        <!-- child -->
+        <p id="msg">Hello</p>
+    </div>
+
+    <script>
+        const box = document.querySelector('.box');
+
+        const msg = box.querySelector('#msg');
+        
+        msg.style.color = "blue";
+        box.style.background = "red";
+    </script>
+</body>
+</html>

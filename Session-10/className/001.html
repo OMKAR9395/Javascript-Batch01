@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="title">Heading 1</h2>
+    <h2 class="title"> Heading 2</h2>
+
+    <script>
+        const heads = document.getElementsByClassName('title');
+
+        for(let i = 0;i<heads.length;i++){
+            heads[i].textContent = 'Changes Using Get Element By id';
+            heads[i].style.color = 'crimson';
+        }
+    </script>
+</body>
+</html>
