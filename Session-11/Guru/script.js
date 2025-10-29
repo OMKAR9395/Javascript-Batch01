@@ -17,8 +17,8 @@ const sections = {
         link.addEventListener("click",fun);
     });
     
-    function fun (e) {
-            e.preventDefault();
-            const section = e.target.dataset.section;
+    function fun (events) {
+            events.preventDefault();
+            const section = events.target.dataset.section;
             document.getElementById("content").innerHTML = sections[section];
         }

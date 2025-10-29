@@ -15,15 +15,19 @@
    </center>
 
    <script>
+    
     const questions = [
-        { q: "2+2 = ?", options: ["3", "4", "5"], answer: "4" },
-        {q: "Capital of France?", options: ["Paris", "Rome", "Berlin"], answer: "Paris"},
+        { q: "2+2 = ?",             options: ["3", "4", "5"],                                                                               answer: "4" },
+        {q: "Capital of France?", options: ["Paris", "Rome", "Berlin"],                                                                     answer: "Paris"},
         {q: "HTML stands for?", options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"], answer: "Hyper Text Markup Language"}
     ];
 
+
     let index =0, score = 0;
+
     const quiz = document.getElementById("quiz");
     const nextBtn = document.getElementById("next");
+
     loadQuestion();
 
     function loadQuestion(){
