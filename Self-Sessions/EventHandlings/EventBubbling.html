@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+     <style>
+      #outer {
+        padding: 30px;
+        background: lightblue;
+      }
+      #middle {
+        padding: 30px;
+        background: lightgreen;
+      }
+      #inner {
+        padding: 30px;
+        background: lightcoral;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+     <div id="outer">
+      Outer DIV (Grand Parent)
+        <div id="middle">
+            Middle DIV (Parent)
+                <div id="inner">
+                    Inner DIV (Child)
+                </div>
+        </div>
+    </div>
+
+    <script>
+      const outer = document.getElementById('outer');
+      const middle = document.getElementById('middle');
+      const inner = document.getElementById('inner');
+
+      outer.addEventListener('click', function () {
+       confirm('Outer DIV clicked Grand Parent');
+      });
+
+      middle.addEventListener('click', function () {
+        confirm('Middle DIV clicked Parent');
+      });
+
+      inner.addEventListener('click', function (e) {
+        confirm('Inner DIV clicked Child');
+         e.stopPropagation(); 
+      });
+
+
+
+    </script>
+</body>
+</html>

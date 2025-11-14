@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="grandparent" style="background-color: aqua; height: 200px; width: 200px;">
+       <div id="parent" style="background-color: black;height: 100px;width: 100px;">
+        <button id="child" style="background-color: blue;height: 50px;width: 50px;">
+            click me
+        </button>
+       </div>
+    </div>
+
+    <script>
+        let child = document.getElementById("child");
+        let parent = document.getElementById("parent");
+        let grandparent = document.getElementById("grandparent");
+        child.addEventListener("click",callback);
+        parent.addEventListener("click",callback);
+        grandparent.addEventListener("click",callback);
+
+        function callback(e){
+            confirm("Child Event Triggered");
+            e.stopPropagation();
+        }
+    </script>
+</body>
+</html>

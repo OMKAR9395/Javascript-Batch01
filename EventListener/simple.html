@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="BodyDiv" style=" background-color: aqua; ">Hello World</div>
+    <script>
+       const cl = document.getElementById("BodyDiv");
+       cl.addEventListener("click",callBack)
+
+       function callBack(e){
+        confirm("Click Event Triggered");
+        confirm(e.target);
+        e.preEventDefault();
+       };
+    </script>
+</body>
+</html>

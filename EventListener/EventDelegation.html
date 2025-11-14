@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div>
+     <ul id="myList">
+        <li>Banana</li>
+        <li>Lichi</li>
+        <li>Apple</li>
+        <li>Mango</li>
+    </ul>
+   </div>
+
+    <script>
+       const parentList = document.getElementById('myList');
+
+parentList.addEventListener('click', function(event) {
+  // Check if the clicked element is an <li>
+  if (event.target && event.target.nodeName === 'LI') {
+    confirm('List item clicked:', event.target);
+    // Perform specific actions based on the clicked list item
+  }
+});
+       
+    </script>
+</body>
+</html>
