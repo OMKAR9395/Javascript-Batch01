@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thheme Toggle</title>
+    <style>
+      body.dark {
+        background-color: black;
+        color: white;
+      }
+      body.light {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="themeBtn">Toggle Theme</button>
+
+    <script>
+      function setupTheme() {
+        let current = 'light';
+        return function () {
+          if (current === 'light') {
+            document.body.className = 'dark';
+            current = 'dark';
+            themeBtn.innerText = 'Switch To light';
+          } else {
+            document.body.className = 'light';
+            current = 'light';
+            themeBtn.innerText = 'Switch To Dark';
+          }
+        };
+      }
+      themeBtn.onclick = setupTheme();
+    </script>
+  </body>
+</html>
