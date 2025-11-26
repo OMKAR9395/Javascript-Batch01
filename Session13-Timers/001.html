@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp Based</title>
+</head>
+<body>
+    <button onclick="fun()" id="otpBtn" disabled > Wait for 5 Seconds...</button>
+    <script>
+        let otpBtn = document.getElementById("otpBtn");
+        setTimeout(()=>{
+            otpBtn.disabled = false;
+            otpBtn.innerText = "click for Otp";
+        },5000);
+        function fun(){
+            confirm("Are you sure to submit");
+        }
+    </script>
+</body>
+</html>

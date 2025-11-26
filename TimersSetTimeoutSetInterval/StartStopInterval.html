@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+  </head>
+  <body>
+    <img src="" id="slide" width="300" height="300" />
+
+    <br /><br />
+    <button onclick="startSlider()">Start</button>
+    <button onclick="stopSlider()">Stop</button>
+
+    <script>
+      let slide = document.getElementById('slide');
+
+      let images = [
+        'https://picsum.photos/id/237/300/300',
+        'https://picsum.photos/id/238/300/300',
+        'https://picsum.photos/id/239/300/300',
+        'https://picsum.photos/id/240/300/300',
+        'https://picsum.photos/id/241/300/300',
+      ];
+
+      let index = 0;
+      let sliderInterval;
+
+      function startSlider() {
+        if (sliderInterval) return;
+
+        sliderInterval = setInterval(() => {
+          slide.src = images[index];
+          index = (index + 1) % images.length;
+        }, 2000);
+      }
+
+      function stopSlider() {
+        clearInterval(sliderInterval);
+        sliderInterval = null;
+      }
+
+      startSlider();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="type"></h2>
+    <script>
+      let type = document.getElementById('type');
+      let text =
+        'Hello This Is Trail And Teach Lecture SetTimeOut And SetInterval Topic In Javascript';
+      let index = 0;
+      function typeWritter() {
+        type.innerText = text.slice(0, index);
+        index++;
+        if (index <= text.length) {
+          setTimeout(typeWritter, 100);
+        }
+      }
+      typeWritter();
+    </script>
+  </body>
+</html>

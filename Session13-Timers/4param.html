@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameterized</title>
+</head>
+<body>
+    <h2>Set Interval Function as Argument Demo</h2>
+
+    <div id="output"></div>
+    <script>
+        const output = document.getElementById("output");
+        
+        function miniFunction(){
+            return "Hello This Is Mini Function";
+        }
+        function mainFunction(param){
+            const msg = param();
+            output.innerHTML = msg + "-" + new Date().toLocaleTimeString();
+        }
+        setInterval(mainFunction,1000,miniFunction);
+    </script>
+</body>
+</html>
