@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises All Settled</title>
+  </head>
+  <body>
+    <button id="btn">Click Me</button>
+    <pre id="out"></pre>
+
+    <script>
+      document.getElementById('btn').onclick = () => {
+        let shop1 = Promise.resolve('Shop 1 Is Open');
+        let shop2 = Promise.resolve('Shop 2 is Closed');
+        let shop3 = Promise.resolve('Shop 3 is Closed');
+
+        Promise.allSettled([shop1, shop2, shop3]).then((result) => {
+          document, (getElementById('out').textContent = JSON.stringify(result, null, 2));
+        });
+      };
+    </script>
+  </body>
+</html>

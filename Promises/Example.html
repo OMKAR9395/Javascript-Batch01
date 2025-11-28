@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Example 1</title>
+  </head>
+  <body style="font-family: Arial, Helvetica, sans-serif; padding: 20px">
+    <h2>Example 1 Basic Promise (Resolve / Reject)</h2>
+
+    <button id="btn">Run Promise</button>
+
+    <p id="output" style="font-size: 20px; font-weight: bold"></p>
+
+    <script>
+      let btn = document.getElementById('btn');
+
+      btn.addEventListener('click', () => {
+        let p = new Promise((resolve, reject) => {
+          var success = Math.random() > 0.5; //50% chance
+
+          if (success) {
+            resolve('Promise Resolved Congratulation');
+          } else {
+            reject('Promise Rejected Error Occured');
+          }
+        });
+
+        p.then((msg) => {
+          document.getElementById('output').style.color = 'green';
+          //   document.write(`<h1>${success}</h1>`);
+          document.getElementById('output').textContent = msg;
+        })
+          .catch((err) => {
+            document.getElementById('output').style.color = 'red';
+            document.getElementById('output').textContent = err;
+          })
+          .finally(() => {
+            confirm('Program Executed Successfully');
+          });
+      });
+    </script>
+  </body>
+</html>

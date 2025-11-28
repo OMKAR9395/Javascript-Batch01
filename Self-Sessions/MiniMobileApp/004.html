@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial; padding: 20px">
+    <h3>Promise.all() Example</h3>
+    <button id="btn">Start Dinner</button>
+    <p id="out"></p>
+
+    <script>
+      document.getElementById('btn').onclick = () => {
+        let pizza = Promise.resolve('🍕 Pizza Ready');
+        let drink = Promise.resolve('🥤 Cold Drink Ready');
+        let sweet = Promise.resolve('🍰 Sweet Ready');
+
+        Promise.all([pizza, drink, sweet]).then((result) => {
+          document.getElementById('out').textContent =
+            '🎉 सगळं आलं! Dinner सुरू करा → ' + result.join(', ');
+        });
+      };
+    </script>
+  </body>
+</html>

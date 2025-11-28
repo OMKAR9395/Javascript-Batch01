@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paragraph Slider Start/Stop</title>
+
+    <style>
+        p {
+            font-size: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p id="msg1">This is paragraph ONE.</p>
+    <p id="msg2">This is paragraph TWO.</p>
+    <p id="msg3">This is paragraph THREE.</p>
+
+    <h2 id="clock"></h2>
+
+    <button onclick="stopSlider()">Stop</button>
+    <button onclick="startSlider()">Start</button>
+
+    <script>
+        let slide = [
+            document.getElementById("msg1"),
+            document.getElementById("msg2"),
+            document.getElementById("msg3")
+        ];
+
+        let index = 0;
+        let id = null; 
+
+
+        function startSlider() {
+
+            if (id !== null) return; 
+   
+            id = setInterval(() => {
+
+               
+                slide.forEach(p => p.style.display = "none");
+
+                slide[index].style.display = "block";
+
+                index = (index + 1) % slide.length;
+
+                // Clock
+                document.getElementById("clock").innerText =
+                    new Date().toLocaleTimeString();
+
+            }, 2000);
+                     alert(id);
+        }
+
+        function stopSlider() {
+            clearInterval(id);
+            id = null
+        }
+        startSlider();
+    </script>
+
+</body>
+
+</html>

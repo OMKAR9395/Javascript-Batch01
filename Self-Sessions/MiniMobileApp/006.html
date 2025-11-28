@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial; padding: 20px">
+    <h3>async / await सर्वात सोपं example</h3>
+    <button onclick="run()">Start</button>
+    <p id="out"></p>
+
+    <script>
+      function wait2sec() {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve('⏳ 2 सेकंद झाले!'), 2000);
+        });
+      }
+
+      async function run() {
+        document.getElementById('out').textContent = 'थांबतोय…';
+
+        let msg = await wait2sec(); // इथे थांबतो
+        document.getElementById('out').textContent = msg;
+      }
+    </script>
+  </body>
+</html>

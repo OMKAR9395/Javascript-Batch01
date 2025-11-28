@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial; padding: 20px">
+    <h3>Promise.allSettled() Example</h3>
+    <button id="btn">Check 3 Shops</button>
+    <pre id="out"></pre>
+
+    <script>
+      document.getElementById('btn').onclick = () => {
+        let shop1 = Promise.resolve('Shop1: Chaha Ready');
+        let shop2 = Promise.reject('Shop2: बंद आहे');
+        let shop3 = Promise.reject('Shop3: दूध संपलयं');
+
+        Promise.allSettled([shop1, shop2, shop3]).then((result) => {
+          document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+        });
+      };
+    </script>
+  </body>
+</html>

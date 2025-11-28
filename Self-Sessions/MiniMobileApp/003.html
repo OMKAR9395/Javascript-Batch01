@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chaha Promise</title>
+  </head>
+  <body style="font-family: Arial; padding: 20px">
+    <h2>Chaha (Tea) Example using Promise</h2>
+
+    <button id="btn">Chaha Magav</button>
+
+    <p id="status" style="font-size: 20px; font-weight: bold"></p>
+
+    <script>
+      document.getElementById('btn').addEventListener('click', () => {
+        let status = document.getElementById('status');
+        status.style.color = 'black';
+        status.textContent = '⏳ Chaha banat aahe... Thamba.';
+
+        // Promise
+        let chahaPromise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // दुकानात दुध संपलंय की नाही?
+            let doodhAvailable = fal; // येथे true ठेवतो (no math)
+
+            if (doodhAvailable) {
+              resolve('☕ Chaha Ready! Ghe Patil ❤️');
+            } else {
+              reject('❌ Chaha Nay banla! Doodh Sampala.');
+            }
+          }, 2000);
+        });
+
+        chahaPromise
+          .then((msg) => {
+            status.style.color = 'green';
+            status.textContent = msg;
+          })
+          .catch((err) => {
+            status.style.color = 'red';
+            status.textContent = err;
+          })
+          .finally(() => {
+            console.log('Promise Complete');
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paragraph Slider</title>
+    <style>
+      p {
+        font-size: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="msg1">This is paragraph ONE. It will show first.</p>
+    <p id="msg2">This is paragraph TWO. It will show after 3 seconds.</p>
+    <p id="msg3">This is paragraph THREE. It will show after 6 seconds.</p>
+
+    <h2 id="clock"></h2>
+
+    <button onclick="stopSlider()">Stop Slider</button>
+
+    <script>
+      let slide = [
+        document.getElementById('msg1'),
+        document.getElementById('msg2'),
+        document.getElementById('msg3'),
+      ];
+
+      let index = 0;
+
+      let id = setInterval(() => {
+        slide.forEach((p) => (p.style.display = 'none'));
+
+        slide[index].style.display = 'block';
+
+        index = (index + 1) % slide.length;
+
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+      }, 3000);
+
+      function stopSlider() {
+        clearInterval(id);
+        alert('Slider stopped!');
+      }
+    </script>
+  </body>
+</html>

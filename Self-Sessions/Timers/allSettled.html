@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>allSettled - Images</title>
+  <style>
+    .img-wrap { display:flex; gap:10px; }
+    .card { width:150px; text-align:center; font-size:14px; }
+    img { width:150px; height:100px; object-fit:cover; display:block; }
+  </style>
+</head>
+<body>
+  <h3>Image loader with allSettled()</h3>
+  <div class="img-wrap" id="gallery"></div>
+  <script>
+    function loadImage(url) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => resolve({url});
+        img.onerror = () => reject({url});
+      });
+    }
+
+    const urls = [
+      "https://picsum.photos/id/1015/300/200",      
+      "https://picsum.photos/id/9999999/300/200",   
+      "https://picsum.photos/id/1020/300/200"       
+        ];
+
+    const gallery = document.getElementById("gallery");
+
+    Promise.allSettled(urls.map(loadImage))
+      .then(results => {
+        results.forEach(res => {
+          const card = document.createElement("div");
+          card.className = "card";
+          if (res.status === "fulfilled") {
+            card.innerHTML = `<img src="${res.value.url}" alt=""><div>Loaded</div>`;
+          } else {
+            card.innerHTML = `<div style="width:150px;height:100px;display:flex;align-items:center;justify-content:center;background:#f0f0f0">X</div><div>Failed</div>`;
+          }
+          gallery.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example Timers</title>
+  </head>
+  <body>
+    <h2>Simple Promise Example (Server Simultion)</h2>
+
+    <button id="btn">Get Data</button>
+    <p id="msg" style="font-size: 20px; font-weight: bold"></p>
+
+    <script>
+      document.getElementById('btn').addEventListener('click', () => {
+        let msg = document.getElementById('msg');
+        msg.style.color = 'black';
+        msg.textContent = 'Loading ...';
+
+        //Simple Promise
+
+        let p = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let ok = Math.random() > 0.5;
+
+            if (ok) {
+              resolve('Promise Resolved Congratulation');
+            } else {
+              reject('Promise Rejected Error Occured');
+            }
+          }, 2000);
+        });
+
+        p.then((result) => {
+          msg.style.color = 'green';
+          msg.textContent = result;
+        })
+          .catch((err) => {
+            msg.style.color = 'red';
+            msg.textContent = err;
+          })
+          .finally(() => {
+            // confirm('Program Executed Successfully');
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Promise Example</title>
+  </head>
+  <body style="font-family: Arial; padding: 20px">
+    <h2>Simple Promise Example (Server Simulation)</h2>
+
+    <button id="btn">Get Data</button>
+
+    <p id="msg" style="font-size: 20px; font-weight: bold"></p>
+
+    <script>
+      document.getElementById('btn').addEventListener('click', () => {
+        let msg = document.getElementById('msg');
+        msg.style.color = 'black';
+        msg.textContent = '⏳ Loading...';
+
+        // Simple Promise
+        let p = new Promise((resolve, reject) => {
+          // Fake delay (like server request)
+          setTimeout(() => {
+            let ok = Math.random() > 0.5; // 50% chance
+
+            if (ok) {
+              resolve('🎉 Success: Data milala!');
+            } else {
+              reject('❌ Error: Server down!');
+            }
+          }, 2000);
+        });
+
+        p.then((result) => {
+          msg.style.color = 'green';
+          msg.textContent = result;
+        })
+          .catch((error) => {
+            msg.style.color = 'red';
+            msg.textContent = error;
+          })
+          .finally(() => {
+            console.log('Promise complete');
+          });
+      });
+    </script>
+  </body>
+</html>

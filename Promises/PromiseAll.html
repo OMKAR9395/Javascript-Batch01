@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise All</title>
+  </head>
+  <body>
+    <h3>Promise.All() Example</h3>
+    <button id="btn">Start Dinner</button>
+    <p id="out"></p>
+
+    <script>
+      document.getElementById('btn').onclick = () => {
+        let pizza = Promise.resolve('Pizza Ready');
+        let ColdDrink = Promise.resolve('Cold Drinks Ready');
+        let Sweet = Promise.resolve('Sweet Ready');
+
+        Promise.all([pizza, ColdDrink, Sweet]).then((result) => {
+          document.getElementById('out').textContent =
+            'All Resolved Dinner Start ' + result.join(',');
+        });
+      };
+    </script>
+  </body>
+</html>

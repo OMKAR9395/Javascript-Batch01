@@ -1,0 +1,51 @@
+<!-- save as example5_retry.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Example 5 - Retry</title>
+  </head>
+  <body style="font-family: Arial; padding: 18px">
+    <h3>Example 5 — Retry on failure (async/await)</h3>
+    <button id="btn5">Get Payment Status</button>
+    <p id="out5"></p>
+
+    <script>
+      let attempt = 0;
+      function unstableApi() {
+        return new Promise((res, rej) => {
+          attempt++;
+          // fail first two times, succeed 3rd time
+          setTimeout(() => {
+            if (attempt >= 3) res('Payment Confirmed');
+            else rej(new Error('Network error'));
+          }, 700);
+        });
+      }
+
+      async function getWithRetry(maxRetries = 3) {
+        const out = document.getElementById('out5');
+        out.textContent = 'Checking payment...';
+        let tries = 0;
+        while (tries < maxRetries) {
+          try {
+            const result = await unstableApi();
+            out.textContent = '✅ ' + result + ` (attempt ${tries + 1})`;
+            return;
+          } catch (err) {
+            tries++;
+            out.textContent = `Attempt ${tries} failed: ${err.message}`;
+            // short wait before retry
+            await new Promise((r) => setTimeout(r, 500));
+          }
+        }
+        out.textContent = '❌ All retries failed. Please try later.';
+      }
+
+      document.getElementById('btn5').onclick = () => {
+        attempt = 0;
+        getWithRetry(4);
+      };
+    </script>
+  </body>
+</html>

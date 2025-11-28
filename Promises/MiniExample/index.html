@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobiles Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-light">
+    <div class="container mt-4">
+      <h2 class="text-center mb-4">Mobile Details</h2>
+      <!-- Loader-->
+      <div id="loader" class="text-center">
+        <div class="spinner-border"></div>
+        <p>Loading...</p>
+      </div>
+      <!-- Caard-->>
+     <div id="card" class="card mx-auto shadow" style="max-width: 500px; display: none">
+        <img id="photo" class="card-img-top" alt="mobile image" />
+
+        <div class="card-body">
+          <h5 id="title" class="card-title"></h5>
+          <h6 id="price" class="text-success fw-bold"></h6>
+
+          <p id="rating"></p>
+
+          <h6>Offers:</h6>
+          <ul id="offers"></ul>
+        </div>
+      </div>
+ <!-- Error -->
+      <p id="error" class="text-danger text-center mt-3" style="display: none"></p>
+    </div>
+
+    <script>
+      const loader = document.getElementById('loader');
+      const card = document.getElementById('card');
+      const errorMsg = document.getElementById('error');
+
+      fetch('flipkart.json')
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error('File not found ');
+          }
+          return res.json();
+        })
+        .then((data) => {
+          document.getElementById('title').textContent = data.title;
+          document.getElementById('price').textContent = '₹ ' + data.price;
+          document.getElementById(
+            'rating',
+          ).textContent = `Rating: ${data.rating.rate} ⭐ (${data.rating.reviews} reviews)`;
+
+          document.getElementById('photo').src = data.photo;
+
+          // Offers
+          let offerList = '';
+          data.offers.forEach((par) => {
+            offerList += `<li>${par}</li>`;
+          });
+          document.getElementById('offers').innerHTML = offerList;
+        })
+        .catch((err) => {
+          errorMsg.style.display = 'block';
+          errorMsg.textContent = 'Error: ' + err.message;
+        })
+        .finally(() => {
+          loader.style.display = 'none';
+          card.style.display = 'block';
+        });
+    </script>
+    </div>
+  </body>
+</html>

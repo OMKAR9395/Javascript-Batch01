@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
-</head>
-<body>
-    <img src="" alt="no path detected" width="500" height="500" id="img">
-  <h1 id="clock"></h1>
+  </head>
+  <body>
+    <img src="" alt="no path detected" width="500" height="500" id="img" />
+
+    <h1 id="clock"></h1>
     <script>
-        //Dom
-        let slide = document.getElementById("img");
-        let clock = document.getElementById("clock");
+      //Dom
+      let slide = document.getElementById('img');
+      let clock = document.getElementById('clock');
 
-        //Array and Index
-        let images = ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg"];
-        let index = 0;
+      //Array and Index
+      let images = ['001.jpg', '002.jpg', '003.jpg', '004.jpg', '005.jpg'];
+      let index = 0;
 
-        setInterval(()=>{
-            //img code
-            slide.src = images[index];
-            index = (index+1) % images.length;
+      setInterval(() => {
+        //img code
+        slide.src = images[index];
+        index = (index + 1) % images.length;
 
-            //clock code
-              let now  = new Date().toTimeString();
-            clock.innerText = now;
-        },3000)
+        //clock code
+        let now = new Date().toTimeString();
+        clock.innerText = now;
+      }, 3000);
     </script>
-</body>
+  </body>
 </html>
