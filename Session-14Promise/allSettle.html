@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Settle</title>
+    <style>
+      .card {
+        width: 500px;
+        height: 500px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Image Loader With All Settleed()</h3>
+    <div class="img-wrap" id="gallary"></div>
+
+    <script>
+      function loadImage(url) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = url;
+          img.onload = () => resolve({ url });
+          img.onerror = () => reject({ url });
+        });
+      }
+      //URLS LINKS
+      const urls = [
+        'https://picsum.photos/id/1015/300/200', //valid
+        'https://picsum.photos/id/9999999/300/200', //invalid
+        'https://picsum.photos/id/1020/300/200', //valid
+      ];
+
+      const gallary = document.getElementById('gallary');
+
+      Promise.allSettled(urls.map(loadImage)).then((result) => {
+        result.forEach((res) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          if (res.status === 'fulfilled') {
+            card.innerHTML = `<img src="${res.value.url}" alt="not Fount"> <div>Loaded</div>`;
+          } else {
+            card.innerHTML = `<div style="height: 200px;width: 200px;background-color: red;"></div> <div>Error</div>`;
+          }
+          gallary.appendChild(card);
+        });
+      });
+    </script>
+  </body>
+</html>

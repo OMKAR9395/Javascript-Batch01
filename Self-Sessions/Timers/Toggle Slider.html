@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Paragraph Slider Start/Stop</title>
 
     <style>
-        p {
-            font-size: 20px;
-            display: none;
-        }
+      p {
+        font-size: 20px;
+        display: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <p id="msg1">This is paragraph ONE.</p>
     <p id="msg2">This is paragraph TWO.</p>
     <p id="msg3">This is paragraph THREE.</p>
@@ -25,44 +23,41 @@
     <button onclick="startSlider()">Start</button>
 
     <script>
-        let slide = [
-            document.getElementById("msg1"),
-            document.getElementById("msg2"),
-            document.getElementById("msg3")
-        ];
+      let slide = [
+        document.getElementById('msg1'),
+        document.getElementById('msg2'),
+        document.getElementById('msg3'),
+      ];
 
-        let index = 0;
-        let id = null; 
+      let index = 0;
+      let id = null;
 
+      function startSlider() {
+        if (id !== null) return;
 
-        function startSlider() {
+        id = setInterval(() => {
+          slide.forEach((p) => (p.style.display = 'none'));
 
-            if (id !== null) return; 
-   
-            id = setInterval(() => {
+          slide[index].style.display = 'block';
 
-               
-                slide.forEach(p => p.style.display = "none");
+          index = (index + 1) % slide.length;
 
-                slide[index].style.display = "block";
+          // Clock
+          document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+        }, 2000);
+        console.log(id);
+      }
 
-                index = (index + 1) % slide.length;
+      function stopSlider() {
+        let ret = confirm('Are You Sure To Stop The Slider');
 
-                // Clock
-                document.getElementById("clock").innerText =
-                    new Date().toLocaleTimeString();
-
-            }, 2000);
-                     alert(id);
+        confirm(ret);
+        if (ret) {
+          clearInterval(id);
+          id = null;
         }
-
-        function stopSlider() {
-            clearInterval(id);
-            id = null
-        }
-        startSlider();
+      }
+      startSlider();
     </script>
-
-</body>
-
+  </body>
 </html>
