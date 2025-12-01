@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Async Await Example</h1>
+    <button onclick="run()">Start</button>
+    <p id="out"></p>
+    <script>
+      function wait2Sec() {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve('Wait a While'), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>

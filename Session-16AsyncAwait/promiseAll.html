@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Promise All</h2>
+    <button id="btn">Load Dashboard</button>
+    <pre id="out"></pre>
+
+    <script>
+      function fakeFetch(name, ms) {
+        return new Promise((res) => setTimeout(() => res(`${name} loaded`), ms));
+      }
+
+      async function loadDashboard() {
+        const out = document.getElementById('out');
+        out.textContent = 'Loading...';
+
+        const [user, posts, offers, contact] = await Promise.all([
+          fakeFetch('User Profile', 1000),
+          fakeFetch('Posts ', 4000),
+          fakeFetch('Offers', 3000),
+          fakeFetch('Contact', 1000),
+        ]);
+        out.textContent = `${user} \n ${posts}\n ${offers} \n${contact}`;
+      }
+
+      document.getElementById('btn').onclick = loadDashboard;
+    </script>
+  </body>
+</html>

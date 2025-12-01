@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>Document</title>
+    <h3>Asyncc Await Asynchronous Programming</h3>
+    <button onclick="run()">Start</button>
+    <p id="out"></p>
+  </head>
+  <body>
+    <script>
+      function wait2Sec() {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve('We are in SetTimeout 2 sec'), 2000);
+        });
+      }
+
+      async function run() {
+        document.getElementById('out').textContent = 'Waiting...';
+        let msg = await wait2Sec();
+        document.getElementById('out').textContent = msg;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Example 001</h3>
+    <button id="btn1">Start Coffee</button>
+    <p id="out"></p>
+
+    <script>
+      function wait(ms) {
+        return new Promise((res) => setInterval(res, ms));
+      }
+
+      async function startCoffee() {
+        const out = document.getElementById('out');
+
+        out.textContent = 'Making a coffe Starting';
+
+        await wait(2000);
+
+        out.textContent = 'Coffee is Ready';
+
+        await wait(2000);
+
+        out.textContent = 'Take The Coffee Here Are Seklf Service';
+
+        await wait(2000);
+
+        out.textContent = 'Sir, Can You Make a Paument Please';
+      }
+
+      document.getElementById('btn1').onclick = startCoffee;
+    </script>
+  </body>
+</html>
