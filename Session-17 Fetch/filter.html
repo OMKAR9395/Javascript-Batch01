@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="showAdults()">Show Adults</button>
+    <ul id="list"></ul>
+
+    <script>
+      let peoples = [
+        { name: 'Sachin', age: 25 },
+        { name: 'vikas', age: 20 },
+        { name: 'omkar', age: 24 },
+        { name: 'patil', age: 21 },
+      ];
+
+      function showAdults() {
+        let adults = peoples.filter((p) => p.age >= 22);
+
+        let result = adults.map((a) => '<li>' + a.name + ':' + a.age + '</li>').join('');
+
+        document.getElementById('list').innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

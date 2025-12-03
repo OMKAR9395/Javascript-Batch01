@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Get By Id</h2>
+    <input  id="getId" placeholder="Enter Id">
+    <button id="getIdBtn">Get</button>
+    <p id="single"></p>
+
+    <script>
+        let getIdBtn = document.getElementById("getIdBtn");
+        let single = document.getElementById("single");
+
+        getIdBtn.onclick = async ()=>{
+            let getId = document.getElementById("getId");
+            let id = getId.value;
+
+            let res = await fetch(`http://localhost:3000/students/${id}`);
+
+            if(!res.ok){
+                single.innerText = "Student Not Found";
+                return;
+            }
+            let stu = await res.json();
+            single.innerText = stu.id + " : "+stu.name + " - "+stu.marks;
+        };
+    </script>
+</body>
+</html>

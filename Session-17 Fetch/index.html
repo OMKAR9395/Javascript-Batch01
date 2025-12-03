@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Student CRUD (JSON Server)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin: 6px 0 2px;
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="submit"] {
+      background: #007bff;
+      color: white;
+    }
+    button.cancel-btn {
+      background: #888;
+      color: white;
+      margin-left: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    .action-btn {
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .edit-btn {
+      background: #28a745;
+      color: white;
+    }
+    .delete-btn {
+      background: #dc3545;
+      color: white;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student CRUD (JSON Server + Vanilla JS)</h1>
+
+  <!-- Form: Add / Edit Student -->
+  <form id="studentForm">
+    <h2 id="formTitle">Add New Student</h2>
+    
+    <!-- hidden field for edit mode -->
+    <input type="hidden" id="studentId" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required />
+
+    <button type="submit">Save</button>
+    <button type="button" class="cancel-btn" id="cancelEdit" style="display:none;">Cancel Edit</button>
+
+    <div class="message" id="formMessage"></div>
+  </form>
+
+  <!-- Table: Show Students -->
+  <h2>Student List</h2>
+  <table id="studentsTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- rows will be added by JS -->
+    </tbody>
+  </table>
+
+  <script>
+    const API_URL = 'http://localhost:3000/students';
+
+    const studentForm = document.getElementById('studentForm');
+    const studentIdInput = document.getElementById('studentId');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const formTitle = document.getElementById('formTitle');
+    const formMessage = document.getElementById('formMessage');
+    const cancelEditBtn = document.getElementById('cancelEdit');
+
+    const studentsTableBody = document.querySelector('#studentsTable tbody');
+
+    // 1) Load all students on page load
+    document.addEventListener('DOMContentLoaded', loadStudents);
+
+    function loadStudents() {
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          studentsTableBody.innerHTML = '';
+          data.forEach(addStudentRowToTable);
+        })
+        .catch(err => {
+          console.error('Error loading students:', err);
+        });
+    }
+
+    // Helper: add row in table
+    function addStudentRowToTable(student) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${student.id}</td>
+        <td>${student.name}</td>
+        <td>${student.email}</td>
+        <td>
+          <button class="action-btn edit-btn" onclick="editStudent(${student.id})">Edit</button>
+          <button class="action-btn delete-btn" onclick="deleteStudent(${student.id})">Delete</button>
+        </td>
+      `;
+      studentsTableBody.appendChild(tr);
+    }
+
+    // 2) Handle form submit (create or update)
+    studentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const id = studentIdInput.value;
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+
+      if (!name || !email) {
+        showMessage('Please fill all fields', true);
+        return;
+      }
+
+      const studentData = { name, email };
+
+      if (id) {
+        // Update existing student (PUT)
+        updateStudent(id, studentData);
+      } else {
+        // Create new student (POST)
+        createStudent(studentData);
+      }
+    });
+
+    function createStudent(studentData) {
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(studentData)
+      })
+        .then(res => res.json())
+        .then(data => {
+          showMessage('Student added successfully!');
+          studentForm.reset();
+          // add new row in table
+          addStudentRowToTable(data);
+        })
+        .catch(err => {
+          console.error('Error creating student:', err);
+          showMessage('Error creating student', true);
+        });
+    }
+
+    function updateStudent(id, studentData) {
+      fetch(`${API_URL}/${id}`, {
+        method: 'PUT', // किंवा PATCH वापरू शकतो
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...studentData, id: Number(id) })
+      })
+        .then(res => res.json())
+        .then(data => {
+          showMessage('Student updated successfully!');
+          resetFormState();
+          // refresh table
+          loadStudents();
+        })
+        .catch(err => {
+          console.error('Error updating student:', err);
+          showMessage('Error updating student', true);
+        });
+    }
+
+    // 3) Edit student (fill form)
+    window.editStudent = function (id) {
+      fetch(`${API_URL}/${id}`)
+        .then(res => res.json())
+        .then(student => {
+          studentIdInput.value = student.id;
+          nameInput.value = student.name;
+          emailInput.value = student.email;
+          formTitle.textContent = 'Edit Student';
+          cancelEditBtn.style.display = 'inline-block';
+        })
+        .catch(err => {
+          console.error('Error fetching student:', err);
+        });
+    };
+
+    // 4) Delete student
+    window.deleteStudent = function (id) {
+      if (!confirm('Do you really want to delete this student?')) return;
+
+      fetch(`${API_URL}/${id}`, {
+        method: 'DELETE'
+      })
+        .then(() => {
+          showMessage('Student deleted successfully!');
+          loadStudents();
+        })
+        .catch(err => {
+          console.error('Error deleting student:', err);
+          showMessage('Error deleting student', true);
+        });
+    };
+
+    // Cancel edit
+    cancelEditBtn.addEventListener('click', function () {
+      resetFormState();
+    });
+
+    function resetFormState() {
+      studentForm.reset();
+      studentIdInput.value = '';
+      formTitle.textContent = 'Add New Student';
+      cancelEditBtn.style.display = 'none';
+    }
+
+    function showMessage(msg, isError = false) {
+      formMessage.textContent = msg;
+      formMessage.style.color = isError ? 'red' : 'green';
+      setTimeout(() => {
+        formMessage.textContent = '';
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

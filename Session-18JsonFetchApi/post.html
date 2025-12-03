@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Method</title>
+</head>
+<body>
+        <!-- Add Student Details -->
+    <h2>Add Student</h2>
+    <input type="text" id="name" placeholder="Enter a Name">
+    <input type="number" id="marks" placeholder="Enter Marks" > 
+    <button id="addBtn">Add Student</button>
+
+    <hr>
+    <!-- Show Student Details -->
+    <h2>Show Students Details</h2>
+    <button id="loadBtn">Load Students</button>
+    <ul id="list"> </ul>
+
+    <script>
+      let name = document.getElementById("name");
+        addBtn.onclick = async ()=>{
+            let newStudent = {
+                name:name.value,
+                marks:Number(marks.value)
+            };
+            //Api Post Method
+             let res = await fetch("http://localhost:3000/students",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(newStudent)
+             });
+             let data = await res.json();
+             alert("Student added with ID " +data.id);
+        }
+         loadBtn.onclick = async function load (){
+        //api call and store value
+            let res = await fetch("http://localhost:3000/students");
+            let data = await res.json();
+            list.innerHTML = "";
+            data.forEach((par) => {
+              let li = document.createElement("li");
+              li.innerText = par.id +  ":" + par.name +" - "+par.marks;
+              list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

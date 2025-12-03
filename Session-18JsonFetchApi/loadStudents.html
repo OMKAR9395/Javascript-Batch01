@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Students List</h2>
+    <button id="loadBtn">Load Students</button>
+    <ul id="list"></ul>
+
+    <script>
+        let loadBtn = document.getElementById("loadBtn");
+        let list = document.getElementById("list");
+        loadBtn.onclick = async ()=>{
+
+        //api call and store value
+            let res = await fetch("http://localhost:3000/students");
+
+            let data = await res.json();
+
+            list.innerHTML = "";
+            data.forEach((par) => {
+              let li = document.createElement("li");
+              li.innerText = par.id +  ":" + par.name +" - "+par.marks;
+              list.appendChild(li);
+            });
+        }
+    </script>
+  </body>
+</html>
