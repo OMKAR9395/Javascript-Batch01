@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Optional chaining & nullish coalescing</h2>
+
+    <input id="nameInput" placeholder="Enter Name (Optional)" />
+    <button onclick="show()">Show Data</button>
+    <p id="optOutput"></p>
+    <p id="nullOutput"></p>
+    <script>
+      const user = {
+        name: 'Omkar',
+        address: { city: 'Karad' },
+      };
+
+      function show() {
+        let userName = document.getElementById('nameInput').value;
+
+        let city = user?.address?.city;
+
+        document.getElementById('optOutput').textContent = 'User City Optional = ' + city;
+
+        let finalName = userName ?? 'No name Entered';
+        document.getElementById('nullOutput').textContent = 'Your Name (Nullish) ' + finalName;
+      }
+    </script>
+  </body>
+</html>

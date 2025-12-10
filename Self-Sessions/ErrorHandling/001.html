@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 29 - Custom Error (Age Validation)</title>
+</head>
+<body>
+    <h2>Day 29: Throwing Custom Errors - Example 1</h2>
+
+    <label>Enter Age: </label>
+    <input type="number" id="ageInput" placeholder="Enter your age">
+    <button onclick="checkAge()">Check</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkAge() {
+            const result = document.getElementById("result");
+            result.textContent = "";
+
+            const ageValue = document.getElementById("ageInput").value;
+
+            try {
+                if (ageValue === "") {
+
+                    throw new Error("Please enter your age.");
+                }
+
+                const age = Number(ageValue);
+
+                if (age < 0) {
+                    throw new Error("Age cannot be negative.");
+                }
+
+                if (age > 120) {
+                    throw new Error("Please enter a realistic age (0-120).");
+                }
+
+                result.textContent = "✅ Age is valid: " + age;
+            }
+            catch (err) {
+
+                result.textContent = "❌ Error: " + err.message;
+            }
+        }
+    </script>
+</body>
+</html>

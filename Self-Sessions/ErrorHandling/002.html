@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 29 - Custom Error with try...catch...finally</title>
+</head>
+<body>
+    <h2>Day 29: Throwing Custom Errors - Example 2</h2>
+
+    <label>Number 1: </label>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <br><br>
+
+    <label>Number 2: </label>
+    <input type="number" id="num2" placeholder="Enter second number">
+    <br><br>
+
+    <button onclick="handleDivide()">Divide</button>
+
+    <p id="output"></p>
+    <p id="log"></p>
+
+    <script>
+        // ✅ Separate logic function - throws custom errors
+        function divide(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                throw new Error("Both inputs must be valid numbers.");
+            }
+
+            if (b === 0) {
+                // custom error for business rule
+                throw new Error("Cannot divide by zero.");
+            }
+
+            return a / b;
+        }
+
+        function handleDivide() {
+            const output = document.getElementById("output");
+            const log = document.getElementById("log");
+            output.textContent = "";
+            log.textContent = "";
+
+            const n1 = Number(document.getElementById("num1").value);
+            const n2 = Number(document.getElementById("num2").value);
+
+            try {
+                const result = divide(n1, n2); // function je throw karu shakto
+                output.textContent = "✅ Result: " + result;
+            }
+            catch (err) {
+                // yetha sagle custom errors hangle hotil
+                output.textContent = "❌ Error: " + err.message;
+            }
+            finally {
+                // he hamesha run honar, error asla tari / nasla tari
+                log.textContent = "ℹ️ Calculation finished (from finally block).";
+            }
+        }
+    </script>
+</body>
+</html>
